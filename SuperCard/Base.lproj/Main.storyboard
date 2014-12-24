@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zlN-1k-k2K" customClass="PlayingCardView">
+                                <rect key="frame" x="54" y="49" width="250" height="391"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="rle-zF-u4q" appends="YES" id="Xav-JW-Nhj"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="zlN-1k-k2K" secondAttribute="bottom" constant="253" id="0AM-bv-EcO">
+                                <variation key="heightClass=regular-widthClass=compact" constant="191"/>
+                            </constraint>
+                            <constraint firstItem="zlN-1k-k2K" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="1uV-Sc-CkM">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.5"/>
+                            </constraint>
+                            <constraint firstItem="zlN-1k-k2K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="91" id="ZdF-Ch-Fad">
+                                <variation key="heightClass=regular-widthClass=compact" constant="59"/>
+                            </constraint>
+                            <constraint firstItem="zlN-1k-k2K" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="232" id="fch-wq-6SM">
+                                <variation key="heightClass=regular-widthClass=compact" constant="332"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1uV-Sc-CkM"/>
+                                <exclude reference="ZdF-Ch-Fad"/>
+                                <exclude reference="fch-wq-6SM"/>
+                                <exclude reference="0AM-bv-EcO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="1uV-Sc-CkM"/>
+                                <include reference="ZdF-Ch-Fad"/>
+                                <include reference="fch-wq-6SM"/>
+                                <include reference="0AM-bv-EcO"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="playingCardView" destination="zlN-1k-k2K" id="38R-L4-qsk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="rle-zF-u4q">
+                    <connections>
+                        <action selector="swipe:" destination="vXZ-lx-hvc" id="byH-s5-RO9"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="510" y="304.5"/>
+        </scene>
+    </scenes>
+</document>
