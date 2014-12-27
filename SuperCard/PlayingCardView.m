@@ -17,9 +17,9 @@
 
 #pragma mark - Properties
 
-@synthesize faceCardScaleFactor = _faceCardScaleFactor;
-
 #define DEFAULT_FACE_CARD_SCALE_FACTOR 0.90
+
+@synthesize faceCardScaleFactor = _faceCardScaleFactor;
 
 -(CGFloat)faceCardScaleFactor
 {
@@ -51,6 +51,13 @@
     [self setNeedsDisplay];
     
 }
+
+- (NSString *)rankAsString
+{
+    return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"][self.rank];
+}
+
+#pragma mark - Gesture Handling
 
 - (void)pinch:(UIPinchGestureRecognizer *)gesture
 {
@@ -93,7 +100,19 @@
     }else{
         [[UIImage imageNamed:@"cardback"] drawInRect:self.bounds];
     }
+}
 
+- (void)pushContextAndRotateUpsideDown
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    CGContextTranslateCTM(context, self.bounds.size.width, self.bounds.size.height);
+    CGContextRotateCTM(context, M_PI);
+}
+
+- (void)popContext
+{
+    CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
 #pragma mark - Pips
@@ -129,19 +148,6 @@
                             verticalOffset:PIP_VOFFSET1_PERCENTAGE
                         mirroredVertically:YES];
     }
-}
-
-- (void)pushContextAndRotateUpsideDown
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    CGContextTranslateCTM(context, self.bounds.size.width, self.bounds.size.height);
-    CGContextRotateCTM(context, M_PI);
-}
-
-- (void)popContext
-{
-    CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
 #define PIP_FONT_SCALE_FACTOR 0.012
@@ -182,11 +188,6 @@
     }
 }
 
-- (NSString *)rankAsString
-{
-    return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"D",@"R"][self.rank];
-}
-
 - (void)drawCorners
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
@@ -225,9 +226,7 @@
 - (id) initWithFrame:(CGRect)frame
 {
     self =[super initWithFrame:frame];
-    if (self){
-        [self setup];
-    }
+    [self setup];
     return self;
 }
 @end

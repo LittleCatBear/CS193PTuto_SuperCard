@@ -38,7 +38,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="59"/>
                             </constraint>
                             <constraint firstItem="zlN-1k-k2K" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="232" id="fch-wq-6SM">
-                                <variation key="heightClass=regular-widthClass=compact" constant="332"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="192"/>
                             </constraint>
                         </constraints>
                         <variation key="default">

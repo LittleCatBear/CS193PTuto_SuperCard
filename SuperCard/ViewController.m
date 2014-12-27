@@ -33,7 +33,9 @@
     }
 }
 
-- (IBAction)swipe:(UISwipeGestureRecognizer *)sender {
+- (IBAction)swipe:(UISwipeGestureRecognizer *)sender
+{
+    if (!self.playingCardView.faceUp)[self drawRandomPlayingCard];
     self.playingCardView.faceUp = !self.playingCardView.faceUp;
 }
 
